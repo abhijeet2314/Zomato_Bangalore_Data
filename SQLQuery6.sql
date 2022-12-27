@@ -4,9 +4,7 @@
 - Restayrant counts per pincode
 - Top 3 liked dishes per restaurant
 - Find Second best restarant
-- *** booking vs online order analysis ***
-- additional questions below
-- How many restaurants of each category (casual dining, cafe etc.)
+- How many restaurants of casual dining
 - how many restaurants in each city regardless of the type
 - list of restaurants with above 4 star rating
 */
@@ -17,6 +15,7 @@
 select COUNT(distinct name) AS Unique_restaurant_count
 FROM dbo.zomato
 
+
 -- Restaurant counts per pincode(LOCATION here)
 select location, COUNT(name) AS number_of_restaurants
 FROM dbo.zomato
@@ -25,33 +24,17 @@ AND location IS NOT NULL
 GROUP BY location
 
 
--- - Top 3 liked dishes per restaurant
+-- - liked dishes for Casual Dining Restaurants
 Select name, dish_liked
-FROM dbo.zomato
+FROM zomato_bangalore_dataset.dbo.zomato
+WHERE rest_type LIKE '%Casual Dining%'
 GROUP BY name, dish_liked
 
 
-
--- - Find Second best restarant
-SELECT name, rate
-FROM zomato_bangalore_dataset.dbo.zomato
-ORDER BY rate DESC
-GROUP BY rate;
-
-
--- - booking vs online order analysis 
-
-select COUNT(online_order) AS online_orders_count ,COUNT(book_table) AS book_table_count
-FROM dbo.zomato
-where online_order LIKE 'Yes' OR book_table LIKE 'Yes'
-
-
--- - How many restaurants of each category of casual dining. 
-
+-- - How many restaurants of casual dining category. 
 SELECT COUNT(rest_type) AS total_restaurants
 FROM DBO.zomato
 where rest_type LIKE '%Casual Dining%';
-
 
 
 
@@ -71,7 +54,6 @@ ORDER BY rate DESC
 SELECT * 
 FROM zomato_bangalore_dataset.dbo.zomato
 */
-
 
 
 

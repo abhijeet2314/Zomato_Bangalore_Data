@@ -1,5 +1,4 @@
 /* task list
-- Load data into SQL
 - Total unique restarants in Banglore
 - Restaurant counts by LOCATION
 - liked dishes for Casual Dining Restaurants

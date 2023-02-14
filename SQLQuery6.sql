@@ -1,11 +1,11 @@
 /* task list
 - Load data into SQL
 - Total unique restarants in Banglore
-- Restayrant counts per pincode
-- Top 3 liked dishes per restaurant
-- Find Second best restarant
-- How many restaurants of casual dining
+- Restaurant counts by LOCATION
+- liked dishes for Casual Dining Restaurants
+- How many restaurants of casual dining category. 
 - how many restaurants in each city regardless of the type
+- list of restaurants with above 4 star rating
 - list of restaurants with above 4 star rating
 */
 
@@ -16,7 +16,7 @@ select COUNT(distinct name) AS Unique_restaurant_count
 FROM dbo.zomato
 
 
--- Restaurant counts per pincode(LOCATION here)
+-- Restaurant counts by LOCATION
 select location, COUNT(name) AS number_of_restaurants
 FROM dbo.zomato
 WHERE name IS NOT NULL  -- this is to make sure that incomplete data is not
